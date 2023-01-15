@@ -2564,6 +2564,11 @@
   dependencies:
     "cssom" "~0.3.6"
 
+"csv-writer@^1.6.0":
+  "integrity" "sha512-NOx7YDFWEsM/fTRAJjRpPp8t+MKRVvniAg9wQlUKx20MFrPs73WLJhFf5iteqrxNYnsy924K3Iroh3yNHeYd2g=="
+  "resolved" "https://registry.npmjs.org/csv-writer/-/csv-writer-1.6.0.tgz"
+  "version" "1.6.0"
+
 "data-urls@^2.0.0":
   "integrity" "sha512-X5eWTSXO/BJmpdIKCRuKUgSCgAN0OwliVK3yPKbwIWU1Tdw5BRajxlzMidvh+gwko9AfQ9zIj52pzF91Q3YAvQ=="
   "resolved" "https://registry.npmjs.org/data-urls/-/data-urls-2.0.0.tgz"
