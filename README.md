@@ -1,8 +1,8 @@
-# Relayer
+# Pundix 
 
 ## Description
 
-A simple relayer for restore/resend uses' transcations
+A simple http server for querying the token locked on the Pundix contract.
 
 ## Installation
 
@@ -22,21 +22,6 @@ $ yarn start
 ```
 http://127.0.0.1:8082/api/#/
 ```
-## function signature/new
-```
-{
-  "signature": "string", // the EIP712 signature
-  "sender": "string", // sender address
-  "x": "string", // destination address
-  "token": "string", // token address
-  "amount": "string", // the amount of tokens one want to transfer
-  "nonce": "string", // nonce, get from the blockchain to prevent replay attack
-  "deadline": 0 // deadline, till deadline the transcation will expired
-}
-```
-
-## function signature/batch
-to batch transactions manually. But it will still execute automatically every 10min.
 
 ## configration at
 ```
