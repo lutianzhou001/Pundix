@@ -3,12 +3,11 @@ pragma solidity 0.8.17;
 
 
 // Inherited
-import '@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol';
 import '@openzeppelin/contracts/token/ERC721/extensions/ERC721Pausable.sol';
 import './interfaces/INFT.sol';
 
 /**
- * @title Policy
+ * @title NFT
  * @author MetaDefender
  * @dev An ERC721 token which represents a policy.
  * It is minted when users buy the cover.

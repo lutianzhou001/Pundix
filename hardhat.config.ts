@@ -11,6 +11,11 @@ const config: HardhatUserConfig = {
       },
     },
   },
+  etherscan: {
+    apiKey: {
+      polygonMumbai: '3EWYPS54KCZEYHIMZ5X55V5FC4CMTT11H6',
+    }
+  },
   networks: {
     mumbai: {
       url: 'https://polygon-mumbai.g.alchemy.com/v2/XwvHq5PMWDVxAakHt5wdOQWedUdED9C5',
