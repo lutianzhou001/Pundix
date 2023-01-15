@@ -115,20 +115,13 @@ async function main() {
                 }
                 break;
             case 'Approve':
-                const myNFTToApprove = await nft
-                    .connect(currentSigner)
-                    .getNFTs(
-                        await currentSigner.getAddress(),
-                    )
                 const toApprove = await prompt({
-                    type: 'list',
+                    type: 'input',
                     name: 'NFTId',
                     message: 'Which nft you want to approve:)',
-                    choices: myNFTToApprove,
                 });
                 await nft.connect(currentSigner).approve(nft.address, toApprove.NFTId);
                 break;
-
             case 'Exit':
                 process.exit(0);
         }
