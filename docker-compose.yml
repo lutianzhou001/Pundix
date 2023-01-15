@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+    mongo:
+        image: mongo
+        restart: always
+        container_name: mongo_test
+        ports:
+            - '27017:27017'
+        expose:
+            - '27017'
+
+    mongo-express:
+        image: mongo-express
+        restart: always
+        container_name: mongo_express_test
+        ports:
+            - '8081:8081'
+        depends_on:
+            - mongo
