@@ -12,6 +12,12 @@ npm i
 npx hardhat run scripts/deploy.ts --network mumbai
 ```
 
+## verify the contract
+```shell
+chmod +x ./verify.sh
+./verify.sh
+```
+
 ## interact with the contract
 
 ```shell

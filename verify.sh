@@ -1,3 +1,3 @@
 
 echo "verifying NFT"
-npx hardhat verify 0xD657e9d9D07cbaCE4291433e14FdC45C120EF765 Vincent.R.Jaipul VRJ --network mumbai
+npx hardhat verify 0x86417180b9EDfDC3060b4343432989Ae38EB8988 Vincent.R.Jaipul VRJ --network mumbai
