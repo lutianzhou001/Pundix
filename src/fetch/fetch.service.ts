@@ -1,8 +1,13 @@
-import { Injectable } from '@nestjs/common';
+import { LoggerService, Injectable } from '@nestjs/common';
 import { Contract, ethers, BigNumber } from 'ethers';
 import { ConfigService } from '@nestjs/config';
 import { pundixABI } from '../abis/Pundix.abi';
 import { ERC20ABI } from '../abis/ERC20.abi';
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
+import { TokenList } from './schema/database.schema';
+import { Cron, CronExpression } from '@nestjs/schedule';
+import { Logger } from 'ethers/lib.esm/utils';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 
@@ -16,7 +21,11 @@ export type TokenListExtended = {
 @Injectable()
 export class FetchService {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    constructor(private readonly configService: ConfigService) {}
+    constructor(
+        private readonly configService: ConfigService,
+        @InjectModel('TokenList')
+        private readonly tokenListModel: Model<TokenList>,
+    ) {}
 
     async getProvider(): Promise<ethers.providers.JsonRpcProvider> {
         return new ethers.providers.JsonRpcProvider(
@@ -63,6 +72,25 @@ export class FetchService {
             };
             res.push(tl);
         }
+        // record to the database;
+        const tokenListExisted = await this.tokenListModel.findOne({
+            tokenListData: res,
+            timeStamp: new Date().getTime(),
+        });
+        if (tokenListExisted) {
+            throw new Error('SIGNATURE_EXISTED');
+        } else {
+            await new this.tokenListModel({
+                tokenListData: res,
+                timeStamp: new Date().getTime(),
+            }).save();
+        }
         return res;
+    }
+
+    @Cron(CronExpression.EVERY_MINUTE)
+    async fetchTokenListCronJob() {
+        console.log('fetchTokenListCronJob');
+        await this.getTokens();
     }
 }

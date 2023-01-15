@@ -8,6 +8,7 @@ import { ethers } from 'ethers';
 import { ScheduleModule } from '@nestjs/schedule';
 import { FetchController } from './fetch/fetch.controller';
 import { FetchService } from './fetch/fetch.service';
+import { TokenListSchema } from './fetch/schema/database.schema';
 
 @Module({
     imports: [
@@ -26,6 +27,9 @@ import { FetchService } from './fetch/fetch.service';
         }),
 
         HttpModule,
+        MongooseModule.forFeature([
+            { name: 'TokenList', schema: TokenListSchema },
+        ]),
         ScheduleModule.forRoot(),
     ],
     controllers: [AppController, FetchController],
